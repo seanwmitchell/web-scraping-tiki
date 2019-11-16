@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Sean's web scraping app</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://kit.fontawesome.com/0d98899145.js" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+</head>
+<body>
+    <div>
+        <h3 class="m-3">Sean's web scraping app</h3>
+        <div class="d-flex flex-wrap">
+            {% for article in final_articles %}
+            <div class="card m-3" style="width: 18rem;">
+                <img src="{{ article[1] }}" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">{{ article[0] }}</h5>
+                    <div class="card-text">{{ article[7] }}</div>
+                    <p class="">{% for star in range(article[4]) %}<i class="fas fa-star" style="color: green;"></i>{% endfor %}</p>
+                    <a href="{{ article[3] }}" class="btn btn-primary">Buy now</a>{% if article[6] %}<img src="/static/tikinow.png" class="ml-3" style="height: 20px;">{% endif %}
+                </div>
+                <div class="card-header pb-0">
+                    <p>{{ article[2] }}<span class="ml-2" style="color: red;">{{ article[5] }}</span></p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
