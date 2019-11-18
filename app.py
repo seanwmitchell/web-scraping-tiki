@@ -19,7 +19,7 @@ def index():
 
     articles = soup.find_all('div', class_='product-item')
 
-    titles, images, prices, urls, ratings, discounts, tikinow, comments = [], [], [], [], [], [], [], []
+    titles, images, prices, urls, ratings, discounts, tikinow, comments, category = [], [], [], [], [], [], [], [], []
     for i in range(len(articles)):
         titles.append(articles[i].find('p', class_='title').text.replace("...", "").replace(" - ", ""))
         images.append(articles[i].img['data-src'])
@@ -29,9 +29,10 @@ def index():
         discounts.append(articles[i].find('span', class_='sale-tag sale-tag-square').next)
         tikinow.append(len(articles[i].find_all('i', class_='tikicon icon-tikinow')) > 0)
         comments.append(articles[i].find('p', class_='review').string)
+        category.append(BASE_URL.replace("https://tiki.vn/","").replace("/","").replace("-"," ").capitalize())
 
     final_articles = list(
-        zip(titles, images, prices, urls, ratings, discounts, tikinow, comments))
+        zip(titles, images, prices, urls, ratings, discounts, tikinow, comments, category))
 
     return render_template('index.html', final_articles=final_articles)
 
