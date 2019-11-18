@@ -1,11 +1,10 @@
-from flask import Flask, request, render_template
+from flask import Flask, render_template
 import requests
 from bs4 import BeautifulSoup
 import json
 import random
 
 app = Flask(__name__, static_url_path='/static')
-
 
 @app.route('/')
 def index():
@@ -42,6 +41,7 @@ def index():
     final_products = list(
         zip(titles, images, prices, urls, ratings, discounts, tikinow, comments, category))
 
+    #returning the html with our list of products
     return render_template('index.html', final_products=final_products)
 
 if __name__ == '__main__':
