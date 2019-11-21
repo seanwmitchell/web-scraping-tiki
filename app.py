@@ -2,9 +2,16 @@ from flask import Flask, render_template
 import requests
 from bs4 import BeautifulSoup
 import json
-import psycopg2
 
 app = Flask(__name__, static_url_path='/static')
+
+def get_connection():
+    connection = psycopg2.connect(user = "seanm",
+                                  password = '',
+                                  host = "127.0.0.1",
+                                  port = "5432",
+                                  database = "tiki")
+    return connection
 
 @app.route('/')
 def index():
