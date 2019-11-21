@@ -2,7 +2,7 @@ from flask import Flask, render_template
 import requests
 from bs4 import BeautifulSoup
 import json
-import random
+import psycopg2
 
 app = Flask(__name__, static_url_path='/static')
 
