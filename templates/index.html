@@ -14,20 +14,20 @@
 </head>
 <body>
     <div>
-        <h3 class="m-3">Tuc & Sean's web scraping app</h3>
+        <h3 class="m-3">Thich & Sean's web scraping app</h3>
         <div class="d-flex flex-wrap">
             {% for product in final_products %}
             <div class="card m-3" style="width: 18rem;">
-                <img src="{{ product[1] }}" class="card-img-top">
+                <img src="{{ product[2] }}" class="card-img-top">
                 <div class="card-body">
-                    <h5 class="card-title">{{ product[0] }}</h5>
-                    <small style="color: grey;">{{ product[8] }}</small>
-                    <div class="card-text">{{ product[7] }}</div>
-                    <p class="">{% for star in range(product[4]) %}<i class="fas fa-star" style="color: green;"></i>{% endfor %}</p>
-                    <a href="{{ product[3] }}" class="btn btn-primary">Buy now</a>{% if product[6] %}<img src="/static/tikinow.png" class="ml-3" style="height: 20px;">{% endif %}
+                    <h5 class="card-title">{{ product[1] }}</h5>
+                    <small style="color: grey;">{{ product[9] }}</small>
+                    <div class="card-text">{{ product[8] }}</div>
+                    <p class="">{{ product[5] }}<i class="fas fa-star" style="color: green;"></i></p>
+                    <a href="{{ product[4] }}" class="btn btn-primary">Buy now</a>{% if product[7] %}<img src="/static/tikinow.png" class="ml-3" style="height: 20px;">{% endif %}
                 </div>
                 <div class="card-header pb-0">
-                    <p>{{ product[2] }}<span class="ml-2" style="color: red;">{{ product[5] }}</span></p>
+                    <p>{{ product[3] }}<span class="ml-2" style="color: red;">{{ product[6] }}</span></p>
                 </div>
             </div>
             {% endfor %}
