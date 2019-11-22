@@ -36,12 +36,18 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ product[1] }}</h5>
                             <div class="card-text">{{ product[8] }}</div>
+
+                            <!-- Note use of iteration for stars -->
+
                             <p class="">{% for star in range(product[5]) %}<i class="fas fa-star" style="color: green;"></i>{% endfor %}</p>
                             <a href="{{ product[4] }}" class="btn btn-primary">Buy now</a>{% if product[7] %}<img
                                 src="/static/tikinow.png" class="ml-3" style="height: 20px;">{% endif %}
                         </div>
                         <div class="card-header pb-0">
-                            <p>{{ product[3] }}đ<span class="ml-2" style="color: red;">-{{ product[6] }}%</span></p>
+                            <p>{{ "{:,}".format(product[3]) }}đ<span class="ml-2" style="color: red;">-{{ product[6] }}%</span></p>
+
+                            <!-- Note use of a f-string to give price the comma seperation -->
+
                         </div>
                     </div>
                 </div>

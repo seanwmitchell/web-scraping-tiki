@@ -19,19 +19,18 @@ initialise()
 @app.route('/')
 def index():
 
-    # we access the products and a couple of static fields from the database
+    # we access the lists
 
     conn = psycopg2.connect("dbname=sean_tiki user=seanm password=")
     cur = conn.cursor()
     cur.execute('SELECT * FROM products ORDER BY price DESC LIMIT 24;')
     products = cur.fetchall()
-    cur.execute('SELECT * FROM products ORDER BY discount DESC LIMIT 1;')
-    high_disc_prod = cur.fetchall()
     cur.execute('SELECT name, url FROM categories;')
     categories = cur.fetchall()
-    
     cur.execute('SELECT name, url FROM sub_categories;')
     sub_categories = cur.fetchall()
+
+    # Aseembling a tuple of stats values for presentation
 
     cat_count = len(categories)
     sub_count = len(sub_categories)
@@ -42,7 +41,11 @@ def index():
     cur.execute('SELECT AVG(discount) FROM products;')
     avg_disc = round(cur.fetchall()[0][0],0)
     sc_time = (times[0][1] - times[0][0]).seconds
-    stats = [cat_count, sub_count, prod_count, sc_time, avg_disc]
+    stats = (cat_count, sub_count, prod_count, sc_time, avg_disc)
+
+    cur.execute('SELECT * FROM products ORDER BY discount DESC LIMIT 1;')
+    high_disc_prod = cur.fetchall()
+
     conn.close()
 
     # returning the html with our data

@@ -82,5 +82,8 @@ def create_products_table():
         sub_id INTEGER NOT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         ); """).format(sql.Identifier('sean_tiki')))
+
+        # note use of SMALLINT and INTEGER not just VARCHAR
+
     conn.close()
     print("***** products table setup.")
