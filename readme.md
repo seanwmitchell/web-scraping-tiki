@@ -37,4 +37,16 @@ The following libraries were used:
 + Psycopg2
     + A library in Python that is used to connect to a PostgreSQL database.
 
+### Project requirements
 
++ Create a PostGresSQL database. :white_check_mark:
++ Make a function to connect to your database. :white_check_mark:
++ Create table to store your data, please remember that the number of columns in your table should fit with the shape of your data. Otherwise there would be information mismatch problems. :white_check_mark:
++ Make a function to crawl the link of the categories and return a list of category URLs. :white_check_mark:
++ Your main function should be able to do the following things:
+    + Take in two inputs: the list of category URLs and number of pages. :white_check_mark:
+    + Loop through the catergory urls list. :white_check_mark:
+    + In each loop, extract data in each page, until there is no data left or reached the predefined number of pages. :white_check_mark:
+    + Repeat until you have go through every category URLs in the list. :white_check_mark:
+    + The extracted data should be transfered directly to your database. :white_check_mark:
++ Finally, use the data from your database to make analysis about Tiki. Be Creative! :white_check_mark:
